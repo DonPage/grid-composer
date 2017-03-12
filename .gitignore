@@ -1,6 +1,9 @@
 ### Jetbrains
 .idea/
 
+### Config
+config.json
+
 ### Node template
 # Logs
 logs

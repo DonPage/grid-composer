@@ -10,7 +10,14 @@ Grid Composer is a layer on top of [Docker-Selenium](https://github.com/Selenium
 | PUT | `/scale/:browserName/:numberOfNodes` | `$ docker-compose scale <browser>=<numberOfNodes>` | Scale up a specific browser node. |
 | GET | `/status` | `$ docker-compose ps` | get info on node containers. |
 
-## Config
+## Config options
+_These options should be a json format inside config.json_
+
+| Option | Type | Default | Description |
+| ---- | ----------- | ----------- | ----------- |
+| directory | `string` | `./` | Directory of your `docker-compose.yml` file. |
+| maxNodes | `number` | `20` | Max number of nodes that should be idle/up at any given time. |
+
 
 
 
