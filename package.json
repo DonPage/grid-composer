@@ -11,6 +11,10 @@
     "lodash": "^4.16.5"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "ava ./test"
+  },
+  "devDependencies": {
+    "ava": "^0.18.2"
   }
 }
