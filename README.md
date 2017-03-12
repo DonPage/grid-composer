@@ -8,7 +8,7 @@ Grid Composer is a layer on top of [Docker-Selenium](https://github.com/Selenium
 | POST | `/start` | `$ docker-compose up -d` | boot up docker containers. |
 | POST | `/stop` | `$ docker-compose down` | shutdown docker containers. |
 | PUT | `/scale/:browserName/:numberOfNodes` | `$ docker-compose scale <browser>=<numberOfNodes>` | Scale up a specific browser node. |
-| GET | `/status` | `$ docker-compose ps` | get info on container containers. |
+| GET | `/status` | `$ docker-compose ps` | get info on node containers. |
 
 ## Config
 
