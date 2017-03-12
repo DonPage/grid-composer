@@ -3,6 +3,8 @@ Grid Composer is a layer on top of [Docker-Selenium](https://github.com/Selenium
 
 
 ## API
+_All API methods are private by default and need a API token to be accepted._
+
 | Method | Endpoint | Docker-Compose equivalent | Description |
 | ---- | ----------- | ----------- | ----------- |
 | POST | `/start` | `$ docker-compose up -d` | boot up docker containers. |
@@ -17,6 +19,8 @@ _These options should be a json format inside config.json_
 | ---- | ----------- | ----------- | ----------- |
 | directory | `string` | `./` | Directory of your `docker-compose.yml` file. |
 | maxNodes | `number` | `20` | Max number of nodes that should be idle/up at any given time. |
+| getsPublic | `boolean` | `false` | Allow `GET` methods to be accessible without api token. |
+
 
 
 
