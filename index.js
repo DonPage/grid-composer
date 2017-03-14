@@ -15,6 +15,10 @@ class GridComposer {
     this.config.directory = this.config.directory || './';
     this.config.maxNodes = this.config.maxNodes || 20;
 
+    // command shortcuts.
+    this.compose = 'docker-compose';
+
+    // router init.
     this.router = undefined;
     this.initExpressRouter();
   }
@@ -25,10 +29,17 @@ class GridComposer {
     e.use(bodyParser.json());
     this.router = express.Router();
 
-    this.router.get('/', (req, res) => {
-      console.log(res);
-      console.log(req);
+    this.router.post('/start', (req, res) => {
+      exec(`cd ${this.config.directory}`);
+      const command = exec(`${this.compose} up -d`);
+      command.stdout.on('data', (data) => {
+        console.log('data:');
+        console.log(data);
+        res.json({ data });
+      });
     });
+
+    e.listen(8080);
   }
 }
 
