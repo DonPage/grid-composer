@@ -1,4 +1,5 @@
 import { test } from 'ava';
+
 const GridComposer = require('../index');
 
 test('GridComp uses default config if no config is passed into constructor.', (t) => {
@@ -6,23 +7,21 @@ test('GridComp uses default config if no config is passed into constructor.', (t
   const defaultConfig = {
     getsPublic: false,
     directory: './',
-    maxNodes: 20
+    maxNodes: 20,
   };
 
   t.truthy(JSON.stringify(config) === JSON.stringify(defaultConfig));
-
 });
 
 test('GridComp uses user specified config if it\'s passed into the constructor', (t) => {
-  const nodes = ~~(Math.random() * 99) + 1;
+  const nodes = Math.floor(Math.random() * 99) + 1;
   const config = {
     getsPublic: true,
     maxNodes: nodes,
-    directory: '../'
+    directory: '../',
   };
   const defaultConfig = new GridComposer().config;
   const userConfig = new GridComposer(config).config;
 
   t.falsy(JSON.stringify(userConfig) === JSON.stringify(defaultConfig));
-
 });
