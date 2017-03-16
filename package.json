@@ -12,6 +12,7 @@
   },
   "scripts": {
     "start": "node index.js",
+    "dev":"NODE_ENV=dev node index.js",
     "test": "ava ./test"
   },
   "devDependencies": {
