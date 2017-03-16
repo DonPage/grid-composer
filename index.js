@@ -1,12 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const exec = process.exec;
-const spawn = process.spawn;
-
 
 class GridComposer {
   constructor(config) {
+    const process = require('child_process');
+    this.exec = process.exec;
     this.config = config || {};
 
     // set defaults.
@@ -28,16 +27,8 @@ class GridComposer {
     e.use(bodyParser.json());
     this.router = express.Router();
 
-    this.router.post('/start', (req, res) => {
-      exec(`cd ${this.config.directory}`);
-      const command = exec(`${this.baseCmd} up -d`);
-      command.stdout.on('data', (data) => {
-        res.json({ data });
-      });
-    });
-
     this.router.get('/status', (req, res) => {
-      const command = exec(`${this.baseCmd} ps`);
+      const command = this.exec(`${this.baseCmd} ps`);
       command.stdout.on('data', (data) => {
         res.send(data);
       });
