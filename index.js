@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const process = require('child_process');
 
 const exec = process.exec;
 const spawn = process.spawn;
@@ -52,9 +51,7 @@ class GridComposer {
 
 module.exports = GridComposer;
 
-const init = new GridComposer();
-
-
 if (process.env.NODE_ENV !== 'dev') {
+  const init = () => new GridComposer();
   init();
 }

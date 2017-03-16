@@ -11,8 +11,8 @@
     "lodash": "^4.16.5"
   },
   "scripts": {
-    "start": "node index.js",
-    "dev":"NODE_ENV=dev node index.js",
+    "start": "NODE_ENV='prod' node index.js",
+    "dev":"NODE_ENV='dev' node index.js",
     "test": "ava ./test"
   },
   "devDependencies": {
