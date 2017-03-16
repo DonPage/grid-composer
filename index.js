@@ -30,7 +30,7 @@ class GridComposer {
     this.router.get('/status', (req, res) => {
       const command = this.exec(`${this.baseCmd} ps`);
       command.stdout.on('data', (data) => {
-        res.send(data);
+        res.end(data);
       });
     });
 
