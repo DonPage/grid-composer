@@ -37,7 +37,10 @@ class GridComposer {
     });
 
     this.router.get('/status', (req, res) => {
-      res.json({ hello: 'world' });
+      const command = exec(`${this.baseCmd} ps`);
+      command.stdout.on('data', (data) => {
+        res.send(data);
+      });
     });
 
     e.use('/grid', this.router);
