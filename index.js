@@ -35,7 +35,11 @@ class GridComposer {
 
     e.use('/grid', this.router);
 
-    return e.listen(8080);
+    if (process.env.NODE_ENV !== 'dev') {
+      return e.listen(8080, () => {
+        console.log('server listening on port 8080');
+      });
+    }
   }
 }
 
