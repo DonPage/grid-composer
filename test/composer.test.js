@@ -6,7 +6,6 @@ test('GridComp uses default config if no config is passed into constructor.', (t
   const config = new GridComposer().config;
   const defaultConfig = {
     getsPublic: false,
-    directory: './',
     maxNodes: 20,
   };
 
@@ -18,7 +17,6 @@ test('GridComp uses user specified config if it\'s passed into the constructor',
   const config = {
     getsPublic: true,
     maxNodes: nodes,
-    directory: '../',
   };
   const defaultConfig = new GridComposer().config;
   const userConfig = new GridComposer(config).config;

@@ -13,7 +13,7 @@
   "scripts": {
     "start": "NODE_ENV='prod' node index.js",
     "dev":"NODE_ENV='dev' node index.js",
-    "test": "ava ./test"
+    "test": "NODE_ENV='dev' ava ./test"
   },
   "devDependencies": {
     "ava": "^0.18.2",

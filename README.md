@@ -17,7 +17,6 @@ _These options should be a json format inside config.json_
 
 | Option | Type | Default | Description |
 | ---- | ----------- | ----------- | ----------- |
-| directory | `string` | `./` | Directory of your `docker-compose.yml` file. |
 | maxNodes | `number` | `20` | Max number of nodes that should be idle/up at any given time. |
 | getsPublic | `boolean` | `false` | Allow `GET` methods to be accessible without api token. |
 
