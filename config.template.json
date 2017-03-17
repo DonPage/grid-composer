@@ -1,4 +1,4 @@
 {
   "maxNodes": 20,
-  "APISecret": "007"
+  "port": 8080
 }

@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const userConfig = require('./config.json') || {};
 
 
 class GridComposer {
@@ -9,8 +10,8 @@ class GridComposer {
     this.config = config || {};
 
     // set defaults.
-    this.config.getsPublic = this.config.getsPublic || false;
     this.config.maxNodes = this.config.maxNodes || 20;
+    this.config.port = this.config.port || 8080;
 
     // command shortcuts.
     this.baseCmd = 'docker-compose';
@@ -35,17 +36,17 @@ class GridComposer {
 
     e.use('/grid', this.router);
 
-    if (process.env.NODE_ENV !== 'dev') {
-      return e.listen(8080, () => {
-        console.log('server listening on port 8080');
-      });
+    if (process.env.NODE_ENV === 'dev') {
+      return undefined;
     }
+
+    return e.listen(this.config.port);
   }
 }
 
 module.exports = GridComposer;
 
 if (process.env.NODE_ENV !== 'dev') {
-  const init = () => new GridComposer();
+  const init = () => new GridComposer(userConfig);
   init();
 }

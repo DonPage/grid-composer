@@ -19,6 +19,8 @@ _These options should be a json format inside config.json_
 | ---- | ----------- | ----------- | ----------- |
 | maxNodes | `number` | `20` | Max number of nodes that should be idle/up at any given time. |
 | getsPublic | `boolean` | `false` | Allow `GET` methods to be accessible without api token. |
+| port | `number` | `8080` | The open port you want the API to listen on. |
+
 
 
 
