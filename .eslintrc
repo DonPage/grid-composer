@@ -1,6 +1,7 @@
 {
   "extends": "airbnb",
   "rules": {
-    "global-require": "off"
+    "global-require": "off",
+    "no-multiple-empty-lines": "warn"
   }
 }

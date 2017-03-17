@@ -12,6 +12,7 @@ class GridComposer {
     // set defaults.
     this.config.maxNodes = this.config.maxNodes || 20;
     this.config.port = this.config.port || 8080;
+    this.config.token = this.config.token || false;
 
     // command shortcuts.
     this.baseCmd = 'docker-compose';

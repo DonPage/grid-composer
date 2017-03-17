@@ -14,6 +14,7 @@ test('GridComp uses user specified config if it\'s passed into the constructor',
   const config = {
     port: 1234,
     maxNodes: nodes,
+    token: 'stuff'
   };
   const userConfig = new GridComposer(config).config;
 
