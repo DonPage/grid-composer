@@ -28,7 +28,10 @@ class GridComposer {
     e.use(bodyParser.json());
     this.router = express.Router();
 
-    this.router.get('/status', (req, res) => {
+    this.router.get('/status', async (req, res) => {
+      const token = await this.getTokenFromReq(req);
+      const confirmed = await this.confirmToken(token);
+      if (!confirmed) return;
       const command = this.exec(`${this.baseCmd} ps`);
       command.stdout.on('data', (data) => {
         res.end(data);
@@ -42,6 +45,22 @@ class GridComposer {
     }
 
     return e.listen(this.config.port);
+  }
+
+  async getTokenFromReq(req) {
+    try {
+      return req.query.token;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  async confirmToken(reqToken) {
+    // make sure user has set token in config. If not, accept all reqTokens and return true.
+    if (this.config.token === false) return true;
+    // check it against user config token. If they match, return true.
+    else if (this.config.token === reqToken) return true;
+    return false;
   }
 }
 
