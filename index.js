@@ -33,9 +33,13 @@ class GridComposer {
       const confirmed = await this.confirmToken(token);
       if (!confirmed) return this.handleRejectedToken(res);
       const command = this.exec(`${this.baseCmd} ps`);
-      return command.stdout.on('data', (data) => {
-        res.end(data);
-      });
+      try {
+        return command.stdout.on('data', (data) => {
+          res.end(data);
+        });
+      } catch (err) {
+        return res.status(500).end(err);
+      }
     });
 
     this.router.post('/start', async (req, res) => {
@@ -67,7 +71,7 @@ class GridComposer {
     return e.listen(this.config.port);
   }
 
-  async handleRejectedToken(res) {
+  handleRejectedToken(res) {
     return res.status(401).end({ error: 'Token rejected' });
   }
 
