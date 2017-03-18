@@ -46,7 +46,7 @@ class GridComposer {
       const token = await this.getTokenFromReq(req);
       const confirmed = await this.confirmToken(token);
       if (!confirmed) return this.handleRejectedToken(res);
-      const command = this.exec(`${this.baseCmd} start -d`);
+      const command = this.exec(`${this.baseCmd} up -d`);
       return command.stdout.on('data', (data) => {
         res.end(data);
       });
@@ -56,7 +56,7 @@ class GridComposer {
       const token = await this.getTokenFromReq(req);
       const confirmed = await this.confirmToken(token);
       if (!confirmed) return this.handleRejectedToken(res);
-      const command = this.exec(`${this.baseCmd} down`);
+      const command = this.exec(`${this.baseCmd} stop`);
       return command.stdout.on('data', (data) => {
         res.end(data);
       });
