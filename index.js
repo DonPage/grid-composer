@@ -72,7 +72,7 @@ class GridComposer {
   }
 
   handleRejectedToken(res) {
-    return res.status(401).end({ error: 'Token rejected' });
+    return res.status(401).send('Token rejected');
   }
 
   async getTokenFromReq(req) {
