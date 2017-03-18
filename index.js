@@ -31,9 +31,29 @@ class GridComposer {
     this.router.get('/status', async (req, res) => {
       const token = await this.getTokenFromReq(req);
       const confirmed = await this.confirmToken(token);
-      if (!confirmed) return;
+      if (!confirmed) return this.handleRejectedToken(res);
       const command = this.exec(`${this.baseCmd} ps`);
-      command.stdout.on('data', (data) => {
+      return command.stdout.on('data', (data) => {
+        res.end(data);
+      });
+    });
+
+    this.router.post('/start', async (req, res) => {
+      const token = await this.getTokenFromReq(req);
+      const confirmed = await this.confirmToken(token);
+      if (!confirmed) return this.handleRejectedToken(res);
+      const command = this.exec(`${this.baseCmd} start -d`);
+      return command.stdout.on('data', (data) => {
+        res.end(data);
+      });
+    });
+
+    this.router.post('/stop', async (req, res) => {
+      const token = await this.getTokenFromReq(req);
+      const confirmed = await this.confirmToken(token);
+      if (!confirmed) return this.handleRejectedToken(res);
+      const command = this.exec(`${this.baseCmd} down`);
+      return command.stdout.on('data', (data) => {
         res.end(data);
       });
     });
@@ -45,6 +65,10 @@ class GridComposer {
     }
 
     return e.listen(this.config.port);
+  }
+
+  handleRejectedToken(res) {
+    return res.status(401).end({ error: 'Token rejected' });
   }
 
   async getTokenFromReq(req) {
