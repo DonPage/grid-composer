@@ -67,7 +67,7 @@ class GridComposer {
     return e.listen(this.config.port);
   }
 
-  handleRejectedToken(res) {
+  async handleRejectedToken(res) {
     return res.status(401).end({ error: 'Token rejected' });
   }
 
