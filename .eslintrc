@@ -3,6 +3,7 @@
   "rules": {
     "global-require": "off",
     "no-multiple-empty-lines": "warn",
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
+    "linebreak-style": "off"
   }
 }
