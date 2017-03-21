@@ -91,6 +91,8 @@ class GridComposer {
   confirmScaleParams(browser, number) {
     // make sure they exist.
     if (!browser || !number) return false;
+    // make sure number number is lower than maxNodes in config.
+    if (number > this.config.maxNodes) return false;
     // make sure number is actually a number.
     return !isNaN(number);
   }

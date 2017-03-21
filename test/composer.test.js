@@ -63,3 +63,8 @@ test('confirmScaleParams returns FALSE if INVALID params are passed in', (t) => 
   t.false(grid.confirmScaleParams('chrome', '5a'));
   t.false(grid.confirmScaleParams('chrome', 'hey'));
 });
+
+test('confirmScaleParams returns FALSE number of nodes is over maxNode amount', (t) => {
+  const grid = new GridComposer({ maxNodes: 5 });
+  t.false(grid.confirmScaleParams('chrome', 6));
+});

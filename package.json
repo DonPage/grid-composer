@@ -3,7 +3,7 @@
   "description": "A layer on top of Selenium Docker that exposes Selenium Composer commands via API.",
   "author": "@DonRPage",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "dependencies": {
     "body-parser": "^1.16.1",
     "chai": "^3.5.0",
