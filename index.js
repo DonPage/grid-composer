@@ -64,6 +64,24 @@ class GridComposer {
       }
     });
 
+    this.router.put('/scale/:browser/:number', async (req, res) => {
+      const token = await this.getTokenFromReq(req);
+      const confirmed = await this.confirmToken(token);
+      if (!confirmed) return this.handleRejectedToken(res);
+      const { browser, number } = req.params;
+      if (!this.confirmScaleParams(browser, number)) {
+        return res.status(500).end('Error request parameters.');
+      }
+      try {
+        const command = this.exec(`${this.baseCmd} scale ${browser}=${number}`);
+        return command.stdout.on('data', (data) => {
+          res.end(data);
+        });
+      } catch (err) {
+        return res.status(500).end(err);
+      }
+    });
+
     e.use('/grid', this.router);
 
     if (process.env.NODE_ENV === 'dev') {
@@ -71,6 +89,13 @@ class GridComposer {
     }
 
     return e.listen(this.config.port);
+  }
+
+  confirmScaleParams(browser, number) {
+    // make sure they exist.
+    if (!browser || !number) return false;
+    // make sure number is actually a number.
+    return typeof Number(number) === 'number';
   }
 
   handleRejectedToken(res) {
