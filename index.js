@@ -47,10 +47,7 @@ class GridComposer {
       const confirmed = await this.confirmToken(token);
       if (!confirmed) return this.handleRejectedToken(res);
       try {
-        return this.exec(`${this.baseCmd} stop`, (err, stout) => {
-          // if (err) return res.status(500).end(err);
-          return res.end(stout);
-        });
+        return this.exec(`${this.baseCmd} start -d`, () => res.end());
       } catch (err) {
         return res.status(500).end(err);
       }
@@ -61,10 +58,7 @@ class GridComposer {
       const confirmed = await this.confirmToken(token);
       if (!confirmed) return this.handleRejectedToken(res);
       try {
-        return this.exec(`${this.baseCmd} stop`, (err, stout) => {
-          // if (err) return res.status(500).end(err);
-          return res.end(stout);
-        });
+        return this.exec(`${this.baseCmd} stop`, () => res.end());
       } catch (err) {
         return res.status(500).end(err);
       }
