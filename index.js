@@ -92,7 +92,7 @@ class GridComposer {
     // make sure they exist.
     if (!browser || !number) return false;
     // make sure number is actually a number.
-    return typeof Number(number) === 'number';
+    return !isNaN(number);
   }
 
   handleRejectedToken(res) {

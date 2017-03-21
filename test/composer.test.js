@@ -40,9 +40,26 @@ test('confirmToken returns true if user doesn\'t pass token in config', async (t
   t.truthy(confirmed);
 });
 
-test('if getTokenFromReq returns false but user HAS config token; confirmToken should return false', async (t) => {
+test('if getTokenFromReq returns false but user HAS config token; ' +
+  'confirmToken should return false', async (t) => {
   const grid = new GridComposer({ token: 'configToken' });
   const getTokenFromReq = false;
   const confirmed = await grid.confirmToken(getTokenFromReq);
   t.falsy(confirmed);
+});
+
+test('confirmScaleParams returns TRUE if VALID params are passed in', (t) => {
+  const grid = new GridComposer();
+  t.true(grid.confirmScaleParams('chrome', 5));
+  t.true(grid.confirmScaleParams('chrome', '5'));
+});
+
+test('confirmScaleParams returns FALSE if INVALID params are passed in', (t) => {
+  const grid = new GridComposer();
+  t.false(grid.confirmScaleParams(5));
+  t.false(grid.confirmScaleParams('5'));
+  t.false(grid.confirmScaleParams('chrome'));
+  // TIL not to use typeof Number('5A') === 'number'
+  t.false(grid.confirmScaleParams('chrome', '5a'));
+  t.false(grid.confirmScaleParams('chrome', 'hey'));
 });
