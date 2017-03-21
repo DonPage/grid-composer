@@ -73,10 +73,7 @@ class GridComposer {
         return res.status(500).end('Error request parameters.');
       }
       try {
-        const command = this.exec(`${this.baseCmd} scale ${browser}=${number}`);
-        return command.stdout.on('data', (data) => {
-          res.end(data);
-        });
+        return this.exec(`${this.baseCmd} scale ${browser}=${number}`, () => res.end());
       } catch (err) {
         return res.status(500).end(err);
       }
