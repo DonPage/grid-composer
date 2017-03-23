@@ -88,10 +88,16 @@ class GridComposer {
     return e.listen(this.config.port);
   }
 
+  /**
+   * @method confirmScaleParams
+   * @param {string} browser - Browser to scale
+   * @param {number} number - Amount of nodes for specific browser
+   * @return {boolean}
+   */
   confirmScaleParams(browser, number) {
     // make sure they exist.
     if (!browser || !number) return false;
-    // make sure number number is lower than maxNodes in config.
+    // make sure number is lower than maxNodes in config.
     if (number > this.config.maxNodes) return false;
     // make sure number is actually a number.
     return !isNaN(number);
@@ -109,6 +115,11 @@ class GridComposer {
     }
   }
 
+  /**
+   * @method confirmToken
+   * @param {?} reqToken - token from request.
+   * @return {boolean}
+   */
   async confirmToken(reqToken) {
     // make sure user has set token in config. If not, accept all reqTokens and return true.
     if (this.config.token === false) return true;
