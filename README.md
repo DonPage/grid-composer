@@ -16,7 +16,8 @@ _All API methods are public by default. Passing in `{token: 'secretToken'}` will
 1. cd into the location of `docker-compose.yml`.
 2. clone repo: `$ git clone https://github.com/DonPage/grid-composer.git .` (the `.` is so it clones everything _within_ in the repo.)
 3. (_optional_) create `config.json`.
-4. run `$ npm start`.
+4. run `$ npm install`.
+5. run `$ npm start`.
 
 ## Config options
 _These options should be a json format inside config.json_
