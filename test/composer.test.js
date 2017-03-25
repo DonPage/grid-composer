@@ -1,3 +1,4 @@
+/* eslint max-len: 0 */  // --> OFF
 import { test } from 'ava';
 
 const GridComposer = require('../index');

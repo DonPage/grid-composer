@@ -73,7 +73,8 @@ class GridComposer {
         return res.status(500).end('Error request parameters.');
       }
       try {
-        return this.exec(`${this.baseCmd} scale ${browser}=${number}`, () => res.end());
+        return this.exec(`${this.baseCmd} scale ${browser}=${number}`, () =>
+          res.end());
       } catch (err) {
         return res.status(500).end(err);
       }
@@ -121,7 +122,8 @@ class GridComposer {
    * @return {boolean}
    */
   async confirmToken(reqToken) {
-    // make sure user has set token in config. If not, accept all reqTokens and return true.
+    // make sure user has set token in config. If not, accept all reqTokens
+    // and return true.
     if (this.config.token === false) return true;
     // check it against user config token. If they match, return true.
     else if (this.config.token === reqToken) return true;

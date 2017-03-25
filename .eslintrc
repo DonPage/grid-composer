@@ -1,6 +1,7 @@
 {
   "extends": "airbnb",
   "rules": {
+    "max-len": ["error", 80],
     "global-require": "off",
     "no-multiple-empty-lines": "warn",
     "class-methods-use-this": "off",
