@@ -9,6 +9,7 @@ _All API methods are public by default. Passing in `{token: 'secretToken'}` will
 | ---- | ----------- | ----------- | ----------- |
 | POST | `/start` | `$ docker-compose up -d` | boot up docker containers. |
 | POST | `/stop` | `$ docker-compose down` | shutdown docker containers. |
+| POST | `/restart` | `$ docker-compose restart` | restart all docker containers. |
 | PUT | `/scale/:browserName/:numberOfNodes` | `$ docker-compose scale <browser>=<numberOfNodes>` | Scale up a specific browser node. |
 | GET | `/status` | `$ docker-compose ps` | get info on node containers. |
 
