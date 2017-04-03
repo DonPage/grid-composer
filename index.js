@@ -64,6 +64,17 @@ class GridComposer {
       }
     });
 
+    this.router.post('/restart', async (req, res) => {
+      const token = await this.getTokenFromReq(req);
+      const confirmed = await this.confirmToken(token);
+      if (!confirmed) return this.handleRejectedToken(res);
+      try {
+        return this.exec(`${this.baseCmd} restart`, () => res.end());
+      } catch (err) {
+        return res.status(500).end(err);
+      }
+    });
+
     this.router.put('/scale/:browser/:number', async (req, res) => {
       const token = await this.getTokenFromReq(req);
       const confirmed = await this.confirmToken(token);
