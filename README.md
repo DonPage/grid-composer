@@ -26,7 +26,7 @@ _These options should be a json format inside config.json_
 | Option | Type | Default | Description |
 | ---- | ----------- | ----------- | ----------- |
 | maxNodes | `number` | `20` | Max number of nodes that should be idle/up at any given time. |
-| token | `string|boolean` | `false` | token to confirm against before executing docker-compose commands. If `false`, all API endpoints will be open  |
+| token | `string` | `false` | token to confirm against before executing docker-compose commands. If `false`, all API endpoints will be open  |
 | port | `number` | `8080` | The open port you want the API to listen on. |
 
 
